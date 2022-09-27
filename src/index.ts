@@ -47,6 +47,13 @@ const main = async () => {
       `{{renderer :wordcountchar_${uniqueIdentifier()}}}`
     );
   });
+  
+    // Insert renderer upon slash command
+  logseq.Editor.registerSlashCommand("Tweet Character target", async () => {
+    await logseq.Editor.insertAtEditingCursor(
+      `{{renderer :wordcountchar_${uniqueIdentifier()}, 280}}`
+    );
+  });
 
   // Insert renderer
   logseq.App.onMacroRendererSlotted(async ({ slot, payload }) => {
